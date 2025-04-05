@@ -1,0 +1,112 @@
+:root {
+    --tile-size: min(25vw, 180px);
+    --board-size: calc(var(--tile-size) * 3);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background: url("./mario-bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    max-width: 100%;
+}
+
+h1 {
+    color: #e63946;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 0;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#board {
+    width: var(--board-size);
+    height: var(--board-size);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    background: url("./soil.png");
+    background-size: cover;
+    border: 3px solid white;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+#board div {
+    width: var(--tile-size);
+    height: var(--tile-size);
+    background-image: url("./pipe.png");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+#board div:active {
+    transform: scale(0.95);
+}
+
+#board div img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+#restart-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #e63946;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#restart-btn:hover {
+    background-color: #c1121f;
+}
+
+.hidden {
+    display: none;
+}
+
+.mole-hit {
+    animation: hit 0.2s;
+}
+
+@keyframes hit {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.8); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 600px) {
+    .game-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
